@@ -13,14 +13,10 @@ export class AdminAuthGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router, private userService: UserService) { }
 
   canActivate() {
-    return this.auth.user$
-    .pipe(
-      switchMap(
-      user => this.userService.get(user.uid)
-    ))
+    return this.auth.appUser$
     .pipe(
       map((appUser: AppUser) => {
-      if(!appUser.isAdmin){
+      if (!appUser.isAdmin) {
        this.router.navigateByUrl('/');
       }
       return appUser.isAdmin;
