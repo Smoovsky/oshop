@@ -11,7 +11,7 @@ export class CategoryService {
 
 
 
-  getCategories() {
+  getAll() {
     return this.db.list('/categories', ref => ref.orderByChild('name')) // .equalTo('Bread'))
     .snapshotChanges()
     .pipe(

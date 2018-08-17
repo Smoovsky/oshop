@@ -14,7 +14,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { DataTableModule } from 'angular-4-data-table';
+import { DataTableModule } from 'angular5-data-table';
 
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -51,7 +51,7 @@ import { ProductService } from './product.service';
     ProductFormComponent
   ],
   imports: [
-    DataTableModule,
+    DataTableModule.forRoot(),
     CustomFormsModule,
     BrowserModule,
     FormsModule,
@@ -59,7 +59,7 @@ import { ProductService } from './product.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
+      {path: '', component: ProductsComponent},
       {path: 'products', component: ProductsComponent },
       {path: 'products/:id', component: ProductFormComponent },
       {path: 'login', component: LoginComponent},

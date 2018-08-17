@@ -17,8 +17,10 @@ export class AppComponent {
 
           const returnUrl = localStorage.getItem('returnUrl') || '/';
           // router.navigate([returnUrl])
-          localStorage.removeItem('returnUrl');
-          router.navigateByUrl(returnUrl);
+          if (returnUrl) {
+            localStorage.removeItem('returnUrl');
+            router.navigateByUrl(returnUrl);
+          }
         }
       }
     );

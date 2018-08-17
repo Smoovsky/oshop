@@ -9,12 +9,39 @@
 </p>
 
 <data-table
-
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)" >
+<!-- reload triggered whenever parameter of table changes, page,sort,etc -->
 >
-
+    <data-table-column
+        [property]="'title'"
+        [header]="'Title'"
+        [sortable]="true"
+        [resizable]="true"
+    >
+    </data-table-column>
+    <data-table-column
+        [property]="'price'"
+        [header]="'Price'"
+        [sortable]="true"
+        [resizable]="true"
+    >
+        <ng-template #dataTableCell let-item="item">
+            {{item.price | currency: 'AUD': true}}
+        </ng-template>
+    </data-table-column>
+    <data-table-column
+        [property]="'key'"
+        [header]="'Edit'"
+    >
+        <ng-template #dataTableCell let-item="item">
+            <a [routerLink]="['/admin/products/', item.key]">Edit</a>
+        </ng-template>
+    </data-table-column>
 </data-table>
 
-<table class="table">
+<!-- <table class="table">
     <thead>
         <tr>
             <th>Title</th>
@@ -31,4 +58,4 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->
