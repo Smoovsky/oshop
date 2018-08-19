@@ -1,4 +1,4 @@
-import { AppUser } from './../../models/app-user';
+import { AppUser } from 'models/app-user';
 import { UserService } from './user.service';
 import { AuthService } from './auth.service';
 import { CanActivate, Router } from '@angular/router';

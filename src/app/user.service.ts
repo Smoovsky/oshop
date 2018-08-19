@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
-import { AppUser } from './../../models/app-user';
+import { AppUser } from 'models/app-user';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '../../node_modules/angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { User } from 'firebase';
 
 @Injectable({

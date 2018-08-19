@@ -1,7 +1,7 @@
-import { ProductService } from './../../product.service';
-import { CategoryService } from './../../category.service';
+import { ProductService } from '../../product.service';
+import { CategoryService } from '../../category.service';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 @Component({

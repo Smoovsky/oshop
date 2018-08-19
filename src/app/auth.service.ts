@@ -1,10 +1,10 @@
-import { AppUser } from './../../models/app-user';
+import { AppUser } from 'models/app-user';
 import { Observable, of } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import {User} from 'firebase';
-import { ActivatedRoute } from '../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from './user.service';
 import { switchMap } from 'rxjs/operators';
 
