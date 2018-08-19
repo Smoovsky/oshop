@@ -1,0 +1,13 @@
+.card {
+    margin-bottom: 2rem;
+}
+
+.card-footer{
+    padding: 0;
+}
+
+.card-footer .btn{
+    width:100%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; 
+}
