@@ -1,11 +1,12 @@
 import { CartItem } from './cartItem';
 export class Cart {
-    itemsArray;
+    itemsArray = [];
 
-    constructor(public items) {
+    constructor(public items: CartItem[]) {
         for (const productId in items) {
             if (items.hasOwnProperty(productId)) {
-                this.itemsArray.push(items[productId]);
+                const item = items[productId];
+                this.itemsArray.push(new CartItem(item.product, item.quantity));
             }
         }
     }
@@ -18,7 +19,17 @@ export class Cart {
         }
         return count;
     }
-    get productIds() {
-        return Object.keys(this.items);
+
+    get totalPrice() {
+        let sum = 0;
+        for (const item in this.itemsArray) {
+            if (this.itemsArray.hasOwnProperty(item)) {
+              sum += this.itemsArray[item].totalPrice;
+            }
+        }
+        return sum;
     }
+    // get productIds() {
+    //     return Object.keys(this.items);
+    // }
 }
