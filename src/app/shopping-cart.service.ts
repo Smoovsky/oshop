@@ -1,4 +1,4 @@
-import { Product } from 'models/product';
+import { Product } from '../models/product';
 import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
