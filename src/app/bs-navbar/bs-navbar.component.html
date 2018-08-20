@@ -13,7 +13,12 @@
         <a class="nav-link" routerLink="/login">{{user.name}}</a>
       </li> -->
       <li class="nav-item">
-        <a class="nav-link" routerLink="/shopping-cart">Shopping Cart</a>
+        <a class="nav-link" routerLink="/shopping-cart">
+          Shopping Cart
+          <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
+            {{ cart.totalItemsCount }}
+          </span>
+        </a>
       </li>
       <ng-template #anonymousUser>
         <li class="nav-item">
@@ -32,9 +37,5 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>

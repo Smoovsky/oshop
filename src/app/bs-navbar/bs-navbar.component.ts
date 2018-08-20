@@ -6,6 +6,8 @@ import { AppUser } from 'src/models/app-user';
 import { AuthService } from '../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { Observable } from '../../../node_modules/rxjs';
+import { map } from '../../../node_modules/rxjs/operators';
 
 @Component({
   selector: 'app-bs-navbar',
@@ -16,7 +18,7 @@ export class BsNavbarComponent implements OnInit {
   // user: User;
   // user$: Observable<User>;
   appUser: AppUser;
-  cartCount: number;
+  cart$: Observable<Cart>;
 
   constructor(private auth: AuthService, private cartServie: ShoppingCartService) {
       // afAuth.authState.subscribe(
@@ -31,14 +33,6 @@ export class BsNavbarComponent implements OnInit {
 
   async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    const cart$ = (await this.cartServie.getCart()).valueChanges();
-    cart$.subscribe((cart: Cart) => {
-      this.cartCount = 0;
-      for (const item in cart.items) {
-        if (cart.items.hasOwnProperty(item)) {
-          this.cartCount += cart.items[item].quantity;
-        }
-      }
-    });
+    this.cart$ = await this.cartServie.getCart();
   }
 }
