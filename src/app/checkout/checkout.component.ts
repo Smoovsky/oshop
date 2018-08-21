@@ -1,3 +1,4 @@
+import { Order } from './../../models/model';
 import { AuthService } from './../auth.service';
 import { OrderService } from './../order.service';
 import { Subscription } from 'rxjs';
@@ -24,12 +25,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
     placeOrder() {
       // console.log(this.shipping);
-      const order = {
-        datePlaced: Date.now(),
-        shipping: this.shipping,
-        items: this.cart.itemsArray,
-        userId: this.userId
-      };
+      const order = new Order(this.userId, this.shipping, this.cart);
+      // {
+      //   datePlaced: Date.now(),
+      //   shipping: this.shipping,
+      //   items: this.cart.itemsArray,
+      //   userId: this.userId
+      // };
 
       this.orderServie.storeOrder(order);
     }
