@@ -1,3 +1,4 @@
+import { OrderService } from './../order.service';
 import { Subscription } from 'rxjs';
 import { ShoppingCartService } from './../shopping-cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -14,11 +15,24 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   /**
    *
    */
-  constructor(private shoppingCartService: ShoppingCartService) {
+  constructor(
+    private shoppingCartService: ShoppingCartService,
+    private orderServie: OrderService) {
   }
 
   placeOrder() {
-    console.log(this.shipping);
+    // console.log(this.shipping);
+    const order = {
+      datePlaced: Date.now(),
+      shipping: this.shipping,
+      items: this.cart.itemsArray,
+    }
+    console.log(order);
+    
+     this.orderServie.storeOrder(order).then(
+       x => console.log(x);
+       
+     );
   }
 
   async ngOnInit() {
