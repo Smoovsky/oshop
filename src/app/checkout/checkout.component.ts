@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() { }
+  shipping = {};
+
+  placeOrder() {
+    console.log(this.shipping);
+  }
 
   ngOnInit() {
+
   }
 
 }
