@@ -1,7 +1,9 @@
+import { AuthService } from './../auth.service';
 import { OrderService } from './../order.service';
 import { Subscription } from 'rxjs';
 import { ShoppingCartService } from './../shopping-cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-checkout',
@@ -11,36 +13,36 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class CheckoutComponent implements OnInit, OnDestroy {
   cart = null;
   shipping = {};
-  subscription: Subscription = null;
-  /**
-   *
-   */
+  subscription: Subscription[];
+  userId: string;
+
   constructor(
     private shoppingCartService: ShoppingCartService,
-    private orderServie: OrderService) {
-  }
+    private orderServie: OrderService,
+    private auth: AuthService
+  ) {}
 
-  placeOrder() {
-    // console.log(this.shipping);
-    const order = {
-      datePlaced: Date.now(),
-      shipping: this.shipping,
-      items: this.cart.itemsArray,
+    placeOrder() {
+      // console.log(this.shipping);
+      const order = {
+        datePlaced: Date.now(),
+        shipping: this.shipping,
+        items: this.cart.itemsArray,
+        userId: this.userId
+      };
+
+      this.orderServie.storeOrder(order);
     }
-    console.log(order);
-    
-     this.orderServie.storeOrder(order).then(
-       x => console.log(x);
-       
-     );
+
+    async ngOnInit() {
+      const cart$ = await this.shoppingCartService.getCart();
+      const user$ = this.auth.user$;
+      this.subscription.push(cart$.subscribe(cart => this.cart = cart));
+      this.subscription.push(user$.subscribe(user => this.userId = user.uid));
+    }
+
+    ngOnDestroy() {
+      this.subscription.forEach( x => x.unsubscribe());
+    }
   }
 
-  async ngOnInit() {
-    const cart$ = await this.shoppingCartService.getCart();
-    this.subscription = cart$.subscribe(cart => this.cart = cart);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-}
