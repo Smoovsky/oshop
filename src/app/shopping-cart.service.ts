@@ -19,9 +19,14 @@ export class ShoppingCartService {
     });
   }
 
+  async clearAll() {
+    const cartId = await this.getOrCreateCartId();
+    this.db.object<Cart>('/shopping-carts/' + cartId).remove();
+  }
+
   async getCart() {
     const cartId = await this.getOrCreateCartId();
-    return this.db.object<Cart>('/shopping-carts/' + cartId).valueChanges().pipe(map(x => new Cart(x.items)));
+    return this.db.object<Cart>('/shopping-carts/' + cartId).valueChanges().pipe(map(x => new Cart(x)));
   }
 
   private async getOrCreateCartId() {
@@ -52,6 +57,10 @@ export class ShoppingCartService {
     const item$ = item$F.valueChanges();
     item$.pipe(take(1)).subscribe( item => {
       item = item ? item : {};
+      if (item && (<any>item).quantity === 1 && number === -1) {
+        item$F.remove();
+        return ;
+      }
       item$F.update({
         quantity: ((<any>item).quantity || 0) + number,
         product: product

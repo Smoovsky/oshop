@@ -1,8 +1,12 @@
 import { CartItem } from './cartItem';
 export class Cart {
     itemsArray = [];
+    items;
 
-    constructor(public items: CartItem[]) {
+    constructor(cart) {
+        const items = (cart && cart.items) ? cart.items : {};
+        this.items = items;
+
         for (const productId in items) {
             if (items.hasOwnProperty(productId)) {
                 const item = items[productId];
@@ -14,7 +18,7 @@ export class Cart {
         let count = 0;
         for (const item in this.items) {
             if (this.items.hasOwnProperty(item)) {
-              count += this.items[item].quantity;
+                count += this.items[item].quantity;
             }
         }
         return count;
@@ -24,7 +28,7 @@ export class Cart {
         let sum = 0;
         for (const item in this.itemsArray) {
             if (this.itemsArray.hasOwnProperty(item)) {
-              sum += this.itemsArray[item].totalPrice;
+                sum += this.itemsArray[item].totalPrice;
             }
         }
         return sum;
@@ -32,4 +36,10 @@ export class Cart {
     // get productIds() {
     //     return Object.keys(this.items);
     // }
+
+
+    getQuantity(product) {
+        const item = this.items[product.key];
+        return item ? item.quantity : 0;
+    }
 }
