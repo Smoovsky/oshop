@@ -39,7 +39,9 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
     // };
 
     const result = await this.orderServie.placeOrder(order);
-    this.router.navigate(['/order-success', result.key]);
+    if (result) {
+      this.router.navigate(['/order-success', result.key]);
+    }
    }
   }
 
