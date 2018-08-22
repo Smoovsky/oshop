@@ -39,6 +39,8 @@ import { ProductFilterComponent } from './products/product-filter/product-filter
 import { ProductCardComponent } from './products/product-card/product-card.component';
 import { ShoppingCartService } from './shopping-cart.service';
 import { ProductQuantityComponent } from './shopping-cart/product-quantity/product-quantity.component';
+import { CartSummaryComponent } from './shopping-cart/cart-summary/cart-summary.component';
+import { ShippingFormComponent } from './shopping-cart/shipping-form/shipping-form.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { ProductQuantityComponent } from './shopping-cart/product-quantity/produ
     ProductFormComponent,
     ProductFilterComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    CartSummaryComponent,
+    ShippingFormComponent
   ],
   imports: [
     DataTableModule.forRoot(),
@@ -73,7 +77,7 @@ import { ProductQuantityComponent } from './shopping-cart/product-quantity/produ
       {path: 'login', component: LoginComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]},
-      {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
+      {path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard]},
       {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},

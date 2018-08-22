@@ -1,7 +1,9 @@
+import { Cart } from './../../models/Cart';
+import { Router } from '@angular/router';
 import { Order } from './../../models/model';
 import { AuthService } from './../auth.service';
 import { OrderService } from './../order.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { ShoppingCartService } from './../shopping-cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../user.service';
@@ -11,40 +13,15 @@ import { UserService } from '../user.service';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent implements OnInit, OnDestroy {
-  cart = null;
-  shipping = {};
-  subscription: Subscription[];
-  userId: string;
+export class CheckoutComponent implements OnInit {
+  cart$: Observable<Cart>;
 
   constructor(
-    private shoppingCartService: ShoppingCartService,
-    private orderServie: OrderService,
-    private auth: AuthService
+    private shoppingCartService: ShoppingCartService
   ) {}
 
-    placeOrder() {
-      // console.log(this.shipping);
-      const order = new Order(this.userId, this.shipping, this.cart);
-      // {
-      //   datePlaced: Date.now(),
-      //   shipping: this.shipping,
-      //   items: this.cart.itemsArray,
-      //   userId: this.userId
-      // };
-
-      this.orderServie.storeOrder(order);
-    }
-
     async ngOnInit() {
-      const cart$ = await this.shoppingCartService.getCart();
-      const user$ = this.auth.user$;
-      this.subscription.push(cart$.subscribe(cart => this.cart = cart));
-      this.subscription.push(user$.subscribe(user => this.userId = user.uid));
-    }
-
-    ngOnDestroy() {
-      this.subscription.forEach( x => x.unsubscribe());
+      this.cart$ = await this.shoppingCartService.getCart();
     }
   }
 
