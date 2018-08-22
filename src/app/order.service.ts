@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class OrderService {
-
   constructor(
     private db: AngularFireDatabase,
     private cartService: ShoppingCartService
@@ -25,11 +24,27 @@ export class OrderService {
         a.map(
           o =>
           ({
-            order: o.payload.val(),
-            key: o.key
+            ...o.payload.val(),
+            id: o.key
           })
         )
       )
     );
+  }
+  getOrderByCustomer(userId) {
+    return this.db.list('/order', ref => ref.orderByChild('userId')
+    .equalTo(userId))
+    .snapshotChanges()
+    .pipe(map(
+      a =>
+        a.map(
+          o =>
+            ({
+              order: o.payload.val(),
+              key: o.key
+    }))));
+  }
+  getOrder(id) {
+    return this.db.object('/order/' + id).valueChanges();
   }
 }

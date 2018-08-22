@@ -1,4 +1,4 @@
-import { Cart } from './../models/Cart';
+import { Cart } from '../models/Cart';
 import { Product } from '../models/product';
 import { take, map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';

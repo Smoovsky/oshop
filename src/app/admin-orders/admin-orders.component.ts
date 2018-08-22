@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { OrderService } from './../order.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-orders.component.css']
 })
 export class AdminOrdersComponent implements OnInit {
+  orders$: Observable<any>;
 
-  constructor() { }
+  constructor(
+    private orderService: OrderService
+  ) {
+    this.orders$ = orderService.getAll();
+   }
 
   ngOnInit() {
   }

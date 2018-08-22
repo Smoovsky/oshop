@@ -1,13 +1,13 @@
-import { Cart } from './../../models/Cart';
-import { CartItem } from './../../models/cartItem';
-import { ShoppingCartService } from './../shopping-cart.service';
-import { ShoppingCartComponent } from './../shopping-cart/shopping-cart.component';
-import { AppUser } from 'src/models/app-user';
+import { Cart } from '../../models/Cart';
+import { CartItem } from '../../models/cartItem';
+import { ShoppingCartService } from '../shopping-cart.service';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+import { AppUser } from '../../models/app-user';
 import { AuthService } from '../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { Observable } from '../../../node_modules/rxjs';
-import { map } from '../../../node_modules/rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bs-navbar',

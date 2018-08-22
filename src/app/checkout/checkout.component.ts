@@ -1,10 +1,10 @@
-import { Cart } from './../../models/Cart';
+import { Cart } from '../../models/Cart';
 import { Router } from '@angular/router';
-import { Order } from './../../models/model';
-import { AuthService } from './../auth.service';
-import { OrderService } from './../order.service';
+import { Order } from '../../models/Order';
+import { AuthService } from '../auth.service';
+import { OrderService } from '../order.service';
 import { Subscription, Observable } from 'rxjs';
-import { ShoppingCartService } from './../shopping-cart.service';
+import { ShoppingCartService } from '../shopping-cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../user.service';
 

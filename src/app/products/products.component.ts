@@ -1,9 +1,9 @@
-import { ShoppingCartService } from './../shopping-cart.service';
+import { ShoppingCartService } from '../shopping-cart.service';
 import { switchMap } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from '../../../node_modules/rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',

@@ -1,3 +1,22 @@
-<p>
-  admin-orders works!
-</p>
+<h1>Orders</h1>
+<div class="row col-10">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="orders$ | async as orders">
+        <tr *ngFor="let order of orders">
+          <td>{{order.shipping?.name}}</td>
+          <td>{{}}</td>
+          <td></td>
+        </tr>
+      </ng-container>
+      
+    </tbody>
+  </table>
+</div>
