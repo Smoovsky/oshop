@@ -1,8 +1,8 @@
-import { Cart } from '../../models/Cart';
-import { CartItem } from '../../models/cartItem';
+import { Cart } from 'shared/models/Cart';
+import { CartItem } from 'shared/models/cartItem';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
-import { AppUser } from '../../models/app-user';
+import { AppUser } from 'shared/models/app-user';
 import { AuthService } from '../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';

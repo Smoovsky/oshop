@@ -1,6 +1,6 @@
-import { Cart } from '../../models/Cart';
+import { Cart } from 'shared/models/Cart';
 import { Router } from '@angular/router';
-import { Order } from '../../models/Order';
+import { Order } from 'shared/models/Order';
 import { AuthService } from '../auth.service';
 import { OrderService } from '../order.service';
 import { Subscription, Observable } from 'rxjs';

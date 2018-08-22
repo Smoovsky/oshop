@@ -1,5 +1,5 @@
-import { Cart } from '../models/Cart';
-import { Product } from '../models/product';
+import { Cart } from 'shared/models/Cart';
+import { Product } from 'shared/models/product';
 import { take, map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
