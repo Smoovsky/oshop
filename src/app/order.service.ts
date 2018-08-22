@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { ShoppingCartService } from './shopping-cart.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
@@ -16,5 +17,19 @@ export class OrderService {
     const result = await this.db.list('orders').push(order);
     this.cartService.clearAll();
     return result;
+  }
+
+  getAll() {
+    return this.db.list('/orders').snapshotChanges().pipe(
+      map(a =>
+        a.map(
+          o =>
+          ({
+            order: o.payload.val(),
+            key: o.key
+          })
+        )
+      )
+    );
   }
 }
