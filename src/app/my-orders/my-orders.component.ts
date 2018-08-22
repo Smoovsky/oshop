@@ -1,3 +1,7 @@
+import { OrderService } from './../order.service';
+import { User } from 'firebase';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +9,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './my-orders.component.html',
   styleUrls: ['./my-orders.component.css']
 })
-export class MyOrdersComponent implements OnInit {
+export class MyOrdersComponent  {
+  orders$;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    private auth: AngularFireAuth,
+    private orderService: OrderService
+  ) {
+    auth.authState.subscribe(user => {
+      this.orders$ = this.orderService.getOrderByCustomer(user.uid);
+    }
+    );
   }
 
 }

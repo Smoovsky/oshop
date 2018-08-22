@@ -32,19 +32,19 @@ export class OrderService {
     );
   }
   getOrderByCustomer(userId) {
-    return this.db.list('/order', ref => ref.orderByChild('userId')
+    return this.db.list('/orders', ref => ref.orderByChild('userId')
     .equalTo(userId))
     .snapshotChanges()
     .pipe(map(
       a =>
         a.map(
           o =>
-            ({
-              order: o.payload.val(),
-              key: o.key
-    }))));
+          ({
+            ...o.payload.val(),
+            id: o.key
+          }))));
   }
   getOrder(id) {
-    return this.db.object('/order/' + id).valueChanges();
+    return this.db.object('/orders/' + id).valueChanges();
   }
 }

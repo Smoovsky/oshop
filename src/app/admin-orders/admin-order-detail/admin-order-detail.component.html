@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Order Summary</h5>
+      <ul class="list-group list-group-flush" *ngIf="order$ | async as order">
+        <li *ngFor="let item of order.items"  class="list-group-item">
+          {{item.quantity}} x {{item.product.title}}
+          <div class="float-right">
+            <!-- {{item.totalPrice | currency: 'AUD': 'symbol-narrow'}} -->
+          </div>
+        </li>
+      </ul>
+      <h5 class="card-title" style="padding-top:10px;">Shipping Details</h5>
+      <ul class="list-group list-group-flush" *ngIf="order$ | async as order">
+          <li class="list-group-item">
+            <span class="font-weight-bold">Name:</span><br>{{order.shipping.name}}
+          </li>
+          <li class="list-group-item">
+              <span class="font-weight-bold">Address line 1:</span><br>{{order.shipping.addressLine1}}
+          </li>
+          <li class="list-group-item">
+              <span class="font-weight-bold">Address line 2:</span><br>{{order.shipping.addressLine1}}
+          </li>
+          <li class="list-group-item">
+              <span class="font-weight-bold">City:</span><br>{{order.shipping.city}}
+          </li>
+      </ul>
+    </div>
+  </div>

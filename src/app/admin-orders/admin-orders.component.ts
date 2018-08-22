@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { OrderService } from './../order.service';
+import { OrderService } from '../order.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './admin-orders.component.html',
   styleUrls: ['./admin-orders.component.css']
 })
-export class AdminOrdersComponent implements OnInit {
+export class AdminOrdersComponent {
   orders$: Observable<any>;
 
   constructor(
@@ -15,8 +15,4 @@ export class AdminOrdersComponent implements OnInit {
   ) {
     this.orders$ = orderService.getAll();
    }
-
-  ngOnInit() {
-  }
-
 }

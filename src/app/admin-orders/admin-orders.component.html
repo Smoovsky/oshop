@@ -12,8 +12,10 @@
       <ng-container *ngIf="orders$ | async as orders">
         <tr *ngFor="let order of orders">
           <td>{{order.shipping?.name}}</td>
-          <td>{{}}</td>
-          <td></td>
+          <td>{{order.datePlaced | date}}</td>
+          <td>
+            <a [routerLink]="['/admin/orders', order.id]">View</a>
+          </td>
         </tr>
       </ng-container>
       
