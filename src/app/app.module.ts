@@ -18,22 +18,22 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { DataTableModule } from 'angular5-data-table';
 
 import { AppComponent } from './app.component';
-import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
-import { HomeComponent } from './home/home.component';
+import { BsNavbarComponent } from './core/components/bs-navbar/bs-navbar.component';
+import { HomeComponent } from './core/components/home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { OrderSuccessComponent } from './order-success/order-success.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { LoginComponent } from './login/login.component';
-import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
+import { CheckoutComponent } from './shopping/component/checkout/checkout.component';
+import { OrderSuccessComponent } from './shopping/component/order-success/order-success.component';
+import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
+import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
+import { LoginComponent } from './core/components/login/login.component';
+import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
 
 
 import { RouterModule, CanActivate } from '@angular/router';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 import { ProductService } from './product.service';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductCardComponent } from './products/product-card/product-card.component';
@@ -41,7 +41,7 @@ import { ShoppingCartService } from './shopping-cart.service';
 import { ProductQuantityComponent } from './shopping-cart/product-quantity/product-quantity.component';
 import { CartSummaryComponent } from './shopping-cart/cart-summary/cart-summary.component';
 import { ShippingFormComponent } from './shopping-cart/shipping-form/shipping-form.component';
-import { AdminOrderDetailComponent } from './admin-orders/admin-order-detail/admin-order-detail.component';
+import { AdminOrderDetailComponent } from './admin/components/admin-orders/admin-order-detail/admin-order-detail.component';
 
 @NgModule({
   declarations: [

@@ -1,11 +1,11 @@
 import { Cart } from 'shared/models/Cart';
 import { CartItem } from 'shared/models/cartItem';
-import { ShoppingCartService } from '../shopping-cart.service';
-import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+import { ShoppingCartService } from '../../../shopping-cart.service';
+import { ShoppingCartComponent } from '../../../shopping-cart/shopping-cart.component';
 import { AppUser } from 'shared/models/app-user';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../../auth.service';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../../../user.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
