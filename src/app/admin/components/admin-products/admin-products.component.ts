@@ -1,6 +1,6 @@
 import { Product } from 'shared/models/product';
 import { Observable, Subscription } from 'rxjs';
-import { ProductService } from '../../../product.service';
+import { ProductService } from 'shared/services/product.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataTableResource } from 'angular5-data-table';
 

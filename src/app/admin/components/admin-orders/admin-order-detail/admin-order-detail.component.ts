@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { OrderService } from '../../../../order.service';
+import { OrderService } from 'shared/services/order.service';
 import { Component } from '@angular/core';
 
 @Component({

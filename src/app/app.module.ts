@@ -1,9 +1,9 @@
-import { OrderService } from './order.service';
-import { CategoryService } from './category.service';
+import { OrderService } from 'shared/services/order.service';
+import { CategoryService } from 'shared/services/category.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
-import { UserService } from './user.service';
-import { AuthGuard } from './auth-guard.service';
-import { AuthService } from './auth.service';
+import { UserService } from 'shared/services/user.service';
+import { AuthGuard } from 'shared/services/auth-guard.service';
+import { AuthService } from 'shared/services/auth.service';
 import { environment } from '../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,7 +20,7 @@ import { DataTableModule } from 'angular5-data-table';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './core/components/bs-navbar/bs-navbar.component';
 import { HomeComponent } from './core/components/home/home.component';
-import { ProductsComponent } from './products/products.component';
+import { ProductsComponent } from './shopping/components/products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './shopping/component/checkout/checkout.component';
 import { OrderSuccessComponent } from './shopping/component/order-success/order-success.component';
@@ -34,10 +34,10 @@ import { RouterModule, CanActivate } from '@angular/router';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ProductFormComponent } from './admin/components/product-form/product-form.component';
-import { ProductService } from './product.service';
-import { ProductFilterComponent } from './products/product-filter/product-filter.component';
-import { ProductCardComponent } from './products/product-card/product-card.component';
-import { ShoppingCartService } from './shopping-cart.service';
+import { ProductService } from 'shared/services/product.service';
+import { ProductFilterComponent } from 'shared/components/product-filter/product-filter.component';
+import { ProductCardComponent } from 'shared/components/product-card.component';
+import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 import { ProductQuantityComponent } from './shopping-cart/product-quantity/product-quantity.component';
 import { CartSummaryComponent } from './shopping-cart/cart-summary/cart-summary.component';
 import { ShippingFormComponent } from './shopping-cart/shipping-form/shipping-form.component';

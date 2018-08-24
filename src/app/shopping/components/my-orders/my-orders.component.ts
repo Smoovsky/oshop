@@ -1,4 +1,4 @@
-import { OrderService } from '../../../order.service';
+import { OrderService } from 'shared/services/order.service';
 import { User } from 'firebase';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
