@@ -13,13 +13,11 @@ export class AppComponent {
     auth.user$.subscribe(
       user => {
         if (user) {
-          userService.save(user);
-
-          const returnUrl = localStorage.getItem('returnUrl');
-          // router.navigate([returnUrl])
-          if (returnUrl) {
-            localStorage.removeItem('returnUrl');
-            router.navigateByUrl(returnUrl);
+          const setAdmin = localStorage.getItem('setAdmin');
+          if (setAdmin) {
+            userService.save(user, true);
+          } else {
+            userService.save(user);
           }
         }
       }

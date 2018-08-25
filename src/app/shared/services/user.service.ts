@@ -11,11 +11,21 @@ export class UserService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  save(user: User) {
-    this.db.object('/users/' + user.uid).update({
-      name: user.displayName,
-      email: user.email
-    });
+  save(user: User, setAdmin = false) {
+    if (setAdmin) {
+      this.db.object('/users/' + user.uid).update({
+        name: user.displayName,
+        email: user.email,
+        isAdmin: true
+      });
+    } else {
+      this.db.object('/users/' + user.uid).update({
+        name: user.displayName,
+        email: user.email,
+        isAdmin: false
+      });
+    }
+
   }
 
   get(uid): Observable<AppUser> {

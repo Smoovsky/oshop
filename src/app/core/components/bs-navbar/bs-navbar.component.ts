@@ -1,13 +1,9 @@
 import { Cart } from 'shared/models/Cart';
-import { CartItem } from 'shared/models/cartItem';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
-import { ShoppingCartComponent } from '../../../shopping-cart/shopping-cart.component';
 import { AppUser } from 'shared/models/app-user';
 import { AuthService } from 'shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'shared/services/user.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bs-navbar',
@@ -29,6 +25,14 @@ export class BsNavbarComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+  }
+
+  login() {
+    this.auth.login();
+  }
+
+  loginAsAdmin() {
+    this.auth.loginAsAdmin();
   }
 
   async ngOnInit() {
