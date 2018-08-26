@@ -15,6 +15,7 @@ export class BsNavbarComponent implements OnInit {
   // user$: Observable<User>;
   appUser: AppUser;
   cart$: Observable<Cart>;
+  isNavbarCollapsed = false;
 
   constructor(private auth: AuthService, private cartServie: ShoppingCartService) {
       // afAuth.authState.subscribe(
